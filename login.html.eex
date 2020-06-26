@@ -1,0 +1,24 @@
+<h1>Sign in</h1>
+<%= form_for @conn, Routes.auth_path(@conn, :session), [as: :session], fn f -> %>
+<div class="form-group">
+  <%= label f, :email, for: "email"  %>
+  <%= email_input f, :email, placeholder: "Email", class: "form-control" %>
+  <%= error_tag f, :email %>
+  <%= label f, :password, for: "password" %>
+  <%= password_input f, :password, placeholder: "Password",class: "form-control" %>
+  <%= error_tag f, :password %>
+</div>
+<%= link "dont have account", to: Routes.auth_path(@conn, :new), class: "", style: "text-decoration: none;"%>
+<br><%= submit "Sign in", class: "btn btn-primary" %>
+<% end %>
+
+<div class="" style="margin: 10px 0;">
+  <div class="btn btn-dark">
+    <i class="fa fa-github"></i>
+    <%= link "Sign in with Github", to: Routes.auth_path(@conn, :request, "github"), class: "", style: "text-decoration: none;" %>
+  </div>
+  <div class="btn btn-info">
+    <i class="fa fa-facebook"></i>
+    <%= link "Sign in with Facebook", to: Routes.auth_path(@conn, :request, "facebook"), class: "", style: "text-decoration: none;" %>
+  </div>
+</div>
