@@ -9,6 +9,7 @@ defp deps do
 end
 
 #config.exs
+
  config :ueberauth, Ueberauth,
   providers: [
     github: {Ueberauth.Strategy.Github, [default_scope: "user, public_repo"]},
