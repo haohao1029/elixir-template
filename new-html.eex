@@ -1,0 +1,14 @@
+<h1>New User</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.auth_path(@conn, :create)) %>
+
+<div class="" style="margin: 10px 0;">
+  <div class="btn btn-dark">
+    <i class="fa fa-github"></i>
+    <%= link "Sign in with Github", to: Routes.auth_path(@conn, :request, "github"), class: "", style: "text-decoration: none;" %>
+  </div>
+  <div class="btn btn-info">
+    <i class="fa fa-facebook"></i>
+    <%= link "Sign in with Facebook", to: Routes.auth_path(@conn, :request, "facebook"), class: "", style: "text-decoration: none;" %>
+  </div>
+</div>
