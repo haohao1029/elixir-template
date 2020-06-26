@@ -1,0 +1,19 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <%= if @changeset.action do %>
+    <div class="alert alert-danger">
+      <p>Oops, something went wrong! Please check the errors below.</p>
+    </div>
+  <% end %>
+<div class="form-group">
+  <%= label f, :email, for: "email"  %>
+  <%= email_input f, :email, class: "form-control",id: "email", autocomplate: "false" %>
+  <%= error_tag f, :email %>
+  <%= label f, :password, for: "password" %>
+  <%= password_input f, :password, class: "form-control", id: "password", autocomplate: "false" %>
+  <%= error_tag f, :password %>
+</div>
+  <%= link "got account", to: Routes.auth_path(@conn, :login), class: "nav-link"%>
+  <div class="btn-wrapper">
+    <%= submit "Sign Up", class: "btn btn-primary" %>
+  </div>
+<% end %>
