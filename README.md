@@ -27,9 +27,13 @@ end
   client_secret: "660fc9f113d0b4bc306c9741aeed75fd"
 
 #router.ex
-      pipelin :browser do
+
+
+pipeline :browser do
     plug Crm.Plugs.SetUser
 end
+
+
 
   scope "/auth", CrmWeb do
     pipe_through :browser
