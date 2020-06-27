@@ -1,6 +1,8 @@
 # elixir-template
 
 #mix.exs
+
+
 defp deps do
       {:ueberauth, "~> 0.6"},
      {:ueberauth_github, "~> 0.7"},
@@ -23,3 +25,20 @@ end
  config :ueberauth, Ueberauth.Strategy.Facebook.OAuth,
   client_id: "265816891523856",
   client_secret: "660fc9f113d0b4bc306c9741aeed75fd"
+
+#router.ex
+      pipelin :browser do
+    plug Crm.Plugs.SetUser
+end
+
+  scope "/auth", CrmWeb do
+    pipe_through :browser
+    get "/new", AuthController, :new
+    get "/login", AuthController, :login
+    post "/", AuthController, :create
+    post "/session", AuthController, :session
+
+    get "/signout", AuthController, :signout
+    get "/:provider", AuthController, :request
+    get "/:provider/callback", AuthController, :callback
+  end
