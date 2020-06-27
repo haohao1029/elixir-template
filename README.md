@@ -6,7 +6,7 @@
 defp deps do
       {:ueberauth, "~> 0.6"},
      {:ueberauth_github, "~> 0.7"},
-      {:ueberauth_facebook, "~> 0.8"},
+      {:ueberauth_facebook, "~> 0.8"}
 
 end
 
@@ -46,3 +46,19 @@ end
     get "/:provider", AuthController, :request
     get "/:provider/callback", AuthController, :callback
   end
+  
+  
+  
+  
+  #migration
+  
+   create table(:users) do
+   add :email, :string
+    add :provider, :string
+    add :token, :string
+    add :is_admin, :boolean, default: false, null: false
+    timestamps()
+  end
+   
+   create unique_index(:users, [:email])
+
