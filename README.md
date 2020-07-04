@@ -53,10 +53,12 @@ end
   #migration
   
    create table(:users) do
-   add :email, :string
+    add :email, :string
     add :provider, :string
     add :token, :string
     add :is_admin, :boolean, default: false, null: false
+    add :password, :string
+
     timestamps()
   end
    
